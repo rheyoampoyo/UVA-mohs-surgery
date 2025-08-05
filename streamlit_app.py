@@ -11,7 +11,7 @@ base_dir = "Prod/models"
 
 # Load models
 duration_regressor = joblib.load(os.path.join(base_dir, "xgb_regressor_visit_duration.pkl"))
-stages_regressor = joblib.load(os.path.join(base_dir, "xgb_classifier_number_of_stages.pkl"))
+stages_regressor = joblib.load(os.path.join(base_dir, "xgb_regressor_number_of_stages.pkl"))
 anesthetic_regressor = joblib.load(os.path.join(base_dir, "xgb_regressor_anesthetic_amount.pkl"))
 
 feature_columns = joblib.load(os.path.join(base_dir, "model1_features.pkl"))
@@ -65,7 +65,7 @@ if st.sidebar.button("Estimate"):
     input_encoded = input_encoded[feature_columns]
 
     duration_preds_all = duration_regressor.predict(input_encoded, iteration_range=(0, duration_regressor.n_estimators))
-    stages_preds_all = stages_regressor.predict(input_encoded, iteration_range=(0, stages_regressor.n_estimators))
+    stages_preds_all = stages_regressor.predict(input_encoded)
     anesthetic_preds_all = anesthetic_regressor.predict(input_encoded, iteration_range=(0, anesthetic_regressor.n_estimators))
 
     duration_mean = np.mean(duration_preds_all)
@@ -84,7 +84,7 @@ if st.sidebar.button("Estimate"):
     )
 
     st.success(
-        f"**Estimated Number of Stages:** {stages_mean+1:.0f} "
+        f"**Estimated Number of Stages:** {stages_mean:.1f} "
     )
 
     st.success(
