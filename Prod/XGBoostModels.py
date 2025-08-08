@@ -25,7 +25,6 @@ X = data.drop(columns=[
 ])
 X_encoded = pd.get_dummies(X)
 
-# Targets
 y_duration = data["Duration of Visit (min)"]
 y_stages_raw = data["Number of stages"]
 y_anesthetic = data["Anesthetic Amount (ml)"]
@@ -78,7 +77,6 @@ def print_classifier_metrics(y_train_true, y_test_true, y_train_pred, y_test_pre
     print("Train Recall (weighted):", recall_score(y_train_true, y_train_pred, average='weighted', zero_division=0))
     print("Test Recall (weighted):", recall_score(y_test_true, y_test_pred, average='weighted', zero_division=0))
 
-# Regressors
 duration_train_pred = duration_regressor.predict(X_train)
 duration_test_pred = duration_regressor.predict(X_test)
 
@@ -88,7 +86,6 @@ anesthetic_test_pred = anesthetic_regressor.predict(X_test)
 stages_train_pred = stages_regressor.predict(X_train)
 stages_test_pred = stages_regressor.predict(X_test)
 
-# Classifier
 stages_train_cls_pred = stages_classifier.predict(X_train)
 stages_test_cls_pred = stages_classifier.predict(X_test)
 

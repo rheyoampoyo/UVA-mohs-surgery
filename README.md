@@ -1,8 +1,8 @@
-# 🎈 Blank app template
+### Access the app
 
-A simple Streamlit app template for you to modify!
+Access the app through this link to avoid installing dependencies/requirements
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blank-app-template.streamlit.app/)
+   https://blank-app-pmsaudfvzcc.streamlit.app/
 
 ### How to run it on your own machine
 
@@ -16,4 +16,6 @@ A simple Streamlit app template for you to modify!
 
    ```
    $ streamlit run streamlit_app.py
+
    ```
+
